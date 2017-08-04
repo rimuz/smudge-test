@@ -1,0 +1,51 @@
+#! /usr/bin/smudge
+
+import std.io = io;
+import std.system = sys;
+
+func exists(n)
+    return !null(io.open("./unit_" + n + "/main.sm"));
+
+func main () {
+    var failed = 0, i = 0;
+
+    for(; exists(i); ++i){
+        var cmd =
+            "rm -rf $.out $.err &&"
+            "touch $.in &&"
+            "cat $.in | /usr/bin/smudge $main.sm > $.out 2> $.err".replace("$", "unit_" + i + "/")
+        ;
+
+        io.print("Testing unit ", i, ": ");
+        var has_failed = sys(cmd);
+        
+        if(!has_failed){
+            var out = getText(".out", i) ?: "";
+            var expOut = getText(".expOut", i) ?: out;
+            if(out != expOut){
+                ++failed;
+                io.println("FAILED (unexpected output)");
+                continue;
+            }
+        }
+
+        if(has_failed){
+            ++failed;
+            io.println("FAILED (" + has_failed + ")");
+        } else {
+            io.println("PASSED");
+        }
+
+    }
+
+    io  << " ---"
+        << io.ln << "TESTED: " << i
+        << io.ln << "PASSED: " << i-failed
+        << io.ln << "FAILED: " << failed << io.ln
+        << " ---" << io.ln;;
+}
+
+func getText(file, n){
+    var stream = io.open("unit_" + n + "/" + file, io.READ);
+    return null(stream) ? null : stream.read_all().trim();
+} 
