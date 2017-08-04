@@ -1,0 +1,38 @@
+# String
+
+import std.system = sys;
+import std.io = io;
+
+func e(n) (io << "failed: " << n << io.ln, sys.exit(n));
+
+func main {
+    var a = "This is à' ùniçòde §tring";
+    var b = 'This is à\' ùniçòde §tring';
+
+    a == b || e(1);
+    a != b && e(2);
+    a.compare(b-1) > 0 || e(3);
+    a.u_upper().u_compare(b, true) && e(4);
+    (a < b || a > b || !(a <= b) || !(a >= b)) && e(5);
+    a.clone().to_string().clone().to_string() == b || e(6);
+    a.hash() == b.clone().clone().hash() || e(7);
+
+    a.empty() && e(8);
+
+    a.find('n') == a.idx(12) || e(9);
+    a.find_last('n') == a.idx(-2) || e(10);
+
+    a.substr(0, a.len()/2) + a.substr(a.len()/2) +1 == b +111 -2 || e(11);
+    a.u_substr(a.count(0, a.find(b.u_get(-5))), -1) == "trin" || e(12);
+
+    'T'*a.len() == ('t'*(b.idx(-1)+1)).upper() || e(13);
+    a.idx(a.count()) == a.idx(-1)+1 || e(14);
+    a.get(3).getc(0) - 'o'.getc(0) == 'e'.getc(0) - 'a'.getc(0) || e(15);
+
+    a.contains('niçò') == !b.contains("§prin") || e(16);
+    "["+", ".join([1, 2, 3]) + "]" == [1, 2, 3].to_string() || e(17);
+    a.starts_with("This") == b.ends_with("ring") || e(18);
+    
+    '.'.join(",1,2,,3,4,5,".split(',', true)) == ".".join((1, 2, 3, 4, 5)) || e(19);
+    "   \t\t\n  H e l l o !  \n ".trim() == "H e " + 'l '*2 + "o !" || e(20);
+}
