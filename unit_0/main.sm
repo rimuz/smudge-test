@@ -1,0 +1,7 @@
+# If, switch & loops
+
+import e, std.io;
+
+func main {
+    if(false) sys.exit(1);
+}
