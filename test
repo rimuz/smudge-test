@@ -1,7 +1,6 @@
 #! /usr/bin/smudge
 
-import std.io = io;
-import std.system = sys;
+import std.io, std.system = sys;
 
 func exists(n)
     return !null(io.open("./unit_" + n + "/main.sm", io.READ));
@@ -13,7 +12,7 @@ func main () {
         var cmd =
             "rm -rf $.out $.err &&"
             "touch $.in &&"
-            "cat $.in | smudge $main.sm > $.out 2> $.err".replace("$", "unit_" + i + "/")
+            "cat $.in | smudge -D . $main.sm > $.out 2> $.err".replace("$", "unit_" + i + "/")
         ;
 
         io.print("Testing unit ", i, ": ");
