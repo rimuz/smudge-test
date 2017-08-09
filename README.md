@@ -1,7 +1,7 @@
 # Unit tests for [Smudge](https://github.com/smudgelang/smudge)
 To use this unit tests you need:
 - A **POSIX-Compliant** environment (Cygwin or any Unix-like OS)
-- [**Smudge**](https://github.com/smudgelang/smudge)
+- [**Smudge**](https://github.com/smudgelang/smudge) (the latest version possible)
 
 ## How to use
 First, clone the repository in your working directory:
