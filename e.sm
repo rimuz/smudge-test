@@ -1,0 +1,6 @@
+import std.system = sys, std.io;
+
+func () (n){
+    io.e_println("failed: ", n);
+    sys.exit(n);
+}
