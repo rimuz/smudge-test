@@ -3,5 +3,43 @@
 import e, std.io;
 
 func main {
-    if(false) sys.exit(1);
+    if(false) e(1);
+    if(!true) e(2);
+    if(true && false) e(3);
+    if(false || false) e(4);
+    if(null) e(5);
+
+    switch('hallo'){
+        case "hello":
+            e(6);
+        case "hallo":
+            break;
+        case "hillo":
+        default:
+            e(7);
+    }
+
+    var f = 5;
+    while(--f){
+        if(!f) e(8);
+    }
+
+    var sum = 0;
+    for(var i = 0; i != 5; ++i)
+        sum += i;
+    sum == 10 || e(9);
+
+    for(;;){
+        ++sum;
+        if(sum == 13) continue;
+        if(sum == 15) break;
+        if(sum == 16) e(10);
+    }
+
+    var x = true;
+    var i = 0;
+    do {
+        if(i++ == 1) e(11);
+        x = false;
+    } while(x);
 }
