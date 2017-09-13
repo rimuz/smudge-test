@@ -30,6 +30,9 @@ func main {
     "["+", ".join([1, 2, 3]) + "]" == [1, 2, 3].to_string() || e(17);
     a.starts_with("This") == b.ends_with("ring") || e(18);
 
+    a.delete();
+    b.new();
+
     '.'.join(",1,2,,3,4,5,".split(',', true)) == ".".join((1, 2, 3, 4, 5)) || e(19);
     "   \t\t\n  H e l l o !  \n ".trim() == "H e " + 'l '*2 + "o !" || e(20);
 }
