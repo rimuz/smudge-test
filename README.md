@@ -1,13 +1,13 @@
-# Unit tests for [Smudge](https://github.com/smudgelang/smudge)
+# Unit tests for [Smudge](https://github.com/rimuz/smudge)
 To use this unit tests you need:
 - A **POSIX-Compliant** environment (Cygwin or any Unix-like OS)
-- [**Smudge**](https://github.com/smudgelang/smudge) (the latest version possible)
+- [**Smudge**](https://github.com/rimuz/smudge) (the latest version possible)
 
 ## How to use
 First, clone the repository in your working directory:
 
 ```
-git clone https://github.com/smudgelang/smudge-test
+git clone https://github.com/rimuz/smudge-test
 ```
 
 Now the directory `smudge-test` will contain a script named `test`.
@@ -34,4 +34,4 @@ A unit test **fails** if it returned a non-zero value **or**
 if the output unmet the expected output (given via `.expOut`).
 
 ### See also
-[The Smudge Programming Language](https://github.com/smudgelang/smudge)
+[The Smudge Programming Language](https://github.com/rimuz/smudge)
